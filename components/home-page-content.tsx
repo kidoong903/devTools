@@ -20,7 +20,7 @@ export function HomePageContent() {
           <p className="hero-text">{String(t("heroBody"))}</p>
         </div>
         <div className="hero-strip">
-          {(t("heroPills") as string[]).map((pill) => (
+          {(Array.isArray(t("heroPills")) ? t("heroPills") : []).map((pill) => (
             <span key={pill}>{pill}</span>
           ))}
         </div>
@@ -79,3 +79,4 @@ export function HomePageContent() {
     </div>
   );
 }
+

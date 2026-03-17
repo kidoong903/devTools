@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useLanguage } from "@/components/language-provider";
 import { getFeaturedTools, getOrderedTools } from "@/lib/tool-definitions";
-import { getLocalizedToolText } from "@/lib/i18n";
+import { getLocalizedToolText, messages } from "@/lib/i18n";
 
 export function HomePageContent() {
   const { locale, t } = useLanguage();
+  const heroPills = messages[locale].heroPills;
   const featuredTools = getFeaturedTools();
   const allTools = getOrderedTools();
   const secondaryTools = allTools.filter((tool) => !tool.featured);
@@ -20,7 +21,7 @@ export function HomePageContent() {
           <p className="hero-text">{String(t("heroBody"))}</p>
         </div>
         <div className="hero-strip">
-          {(Array.isArray(t("heroPills")) ? t("heroPills") : []).map((pill) => (
+          {heroPills.map((pill) => (
             <span key={pill}>{pill}</span>
           ))}
         </div>
@@ -79,4 +80,5 @@ export function HomePageContent() {
     </div>
   );
 }
+
 

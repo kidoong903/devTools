@@ -10,10 +10,12 @@ import {
 } from "react";
 import { localeOptions, messages, type Locale, type MessageKey } from "@/lib/i18n";
 
+type MessageValue = (typeof messages)[keyof typeof messages][MessageKey];
+
 type LanguageContextValue = {
   locale: Locale;
   setLocale: (locale: Locale) => void;
-  t: (key: MessageKey) => (typeof messages)["en"][MessageKey];
+  t: (key: MessageKey) => MessageValue;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -53,4 +55,3 @@ export function useLanguage() {
 
   return context;
 }
-

@@ -1,9 +1,11 @@
-﻿import type { Metadata } from "next";
+﻿import Script from "next/script";
+import type { Metadata } from "next";
 import { AppShell } from "@/components/app-shell";
 import { LanguageProvider } from "@/components/language-provider";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+const adsenseClient = "ca-pub-7692188291867192";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -47,6 +49,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <LanguageProvider>
           <AppShell>{children}</AppShell>
         </LanguageProvider>
@@ -54,4 +62,3 @@ export default function RootLayout({
     </html>
   );
 }
-

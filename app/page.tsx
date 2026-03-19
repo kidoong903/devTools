@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   openGraph: {
-    title: "Developer Tools Online | BbalRang Tools",
+    title: "BbalRang Tools | Developer Tools Online",
     description:
       "Use fast online developer tools for JSON, JWT, regex, UUIDs, text diff, Base64, and URL encoding.",
     url: "/"
@@ -19,5 +19,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return <HomePageContent />;
 }
+
 
 

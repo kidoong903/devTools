@@ -4,7 +4,7 @@ import { AppShell } from "@/components/app-shell";
 import { LanguageProvider } from "@/components/language-provider";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bbalrang.com";
 const adsenseClient = "ca-pub-7692188291867192";
 
 export const metadata: Metadata = {
@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "BbalRang Tools",
     type: "website"
+  },
+  other: {
+    "google-adsense-account": adsenseClient
   },
   twitter: {
     card: "summary_large_image",

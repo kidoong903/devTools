@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -17,6 +17,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="header-controls">
           <nav className="top-nav" aria-label="Primary">
             <Link href="/#tools">{String(t("navTools"))}</Link>
+            <Link href="/guides">Guides</Link>
             <Link href="/about">{String(t("navAbout"))}</Link>
             <Link href="/contact">{String(t("navContact"))}</Link>
           </nav>
@@ -27,6 +28,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <footer className="site-footer">
         <p>{String(t("footerRuns"))}</p>
         <div className="footer-links">
+          <Link href="/guides">Guides</Link>
           <Link href="/privacy">{String(t("navPrivacy"))}</Link>
           <Link href="/about">{String(t("navAbout"))}</Link>
           <Link href="/contact">{String(t("navContact"))}</Link>
@@ -35,4 +37,3 @@ export function AppShell({ children }: { children: ReactNode }) {
     </div>
   );
 }
-

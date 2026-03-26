@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useLanguage } from "@/components/language-provider";
+import { getGuideArticles } from "@/lib/guide-articles";
 import { getFeaturedTools, getOrderedTools } from "@/lib/tool-definitions";
 import { getLocalizedToolText, messages } from "@/lib/i18n";
 
@@ -11,6 +12,7 @@ export function HomePageContent() {
   const featuredTools = getFeaturedTools();
   const allTools = getOrderedTools();
   const secondaryTools = allTools.filter((tool) => !tool.featured);
+  const guides = getGuideArticles(locale);
 
   return (
     <div className="page-wrap">
@@ -58,6 +60,28 @@ export function HomePageContent() {
       <section className="section-block home-section-block">
         <div className="section-head">
           <div>
+            <p className="eyebrow">Guides</p>
+            <h2>Practical guides for common development tasks</h2>
+            <p>
+              Read short, original guides for JSON payload review, JWT claim
+              checks, and regex testing before you jump into the tool.
+            </p>
+          </div>
+        </div>
+        <div className="guide-article-grid">
+          {guides.map((guide) => (
+            <article className="guide-article-card" key={guide.slug}>
+              <h3>{guide.title}</h3>
+              <p>{guide.summary}</p>
+              <Link href={`/guides/${guide.slug}`}>Read guide</Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-block home-section-block">
+        <div className="section-head">
+          <div>
             <p className="eyebrow">{String(t("allToolsEyebrow"))}</p>
             <h2>{String(t("allToolsTitle"))}</h2>
             <p>{String(t("allToolsBody"))}</p>
@@ -80,5 +104,3 @@ export function HomePageContent() {
     </div>
   );
 }
-
-

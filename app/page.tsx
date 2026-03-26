@@ -1,17 +1,17 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { HomePageContent } from "@/components/home-page-content";
 
 export const metadata: Metadata = {
-  title: "BbalRang Tools | JSON Formatter, JWT Decoder, Regex Tester",
+  title: "BbalRang Tools | Developer Tools and Practical Guides",
   description:
-    "Fast browser-based developer tools for JSON formatting, JWT decoding, regex testing, UUID generation, text diff checks, Base64, and URL encoding.",
+    "Fast browser-based developer tools with practical guides for JSON formatting, JWT decoding, regex testing, UUID generation, text diff checks, Base64, and URL encoding.",
   alternates: {
     canonical: "/"
   },
   openGraph: {
     title: "BbalRang Tools | Developer Tools Online",
     description:
-      "Use fast online developer tools for JSON, JWT, regex, UUIDs, text diff, Base64, and URL encoding.",
+      "Use fast online developer tools for JSON, JWT, regex, UUIDs, text diff, Base64, and URL encoding, with practical guides for common tasks.",
     url: "/"
   }
 };
@@ -19,6 +19,3 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return <HomePageContent />;
 }
-
-
-

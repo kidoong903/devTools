@@ -1,8 +1,9 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { ToolClient } from "@/components/tool-client";
 import { useLanguage } from "@/components/language-provider";
+import { getGuidesForTool } from "@/lib/guide-articles";
 import type { ToolDefinition } from "@/lib/tool-definitions";
 import { getLocalizedToolText } from "@/lib/i18n";
 import { getToolGuide } from "@/lib/tool-guides";
@@ -11,7 +12,8 @@ export function ToolPageContent({ tool }: { tool: ToolDefinition }) {
   const { locale, t } = useLanguage();
   const localized = getLocalizedToolText(locale, tool.slug);
   const guide = getToolGuide(tool.kind, locale);
-  const faqTitle = locale === "ko" ? "자주 보는 질문" : "FAQ";
+  const relatedGuides = getGuidesForTool(tool.slug, locale);
+  const faqTitle = locale === "ko" ? "FAQ" : "FAQ";
 
   return (
     <div className="page-wrap">
@@ -54,6 +56,26 @@ export function ToolPageContent({ tool }: { tool: ToolDefinition }) {
           </div>
         </div>
       </section>
+
+      {relatedGuides.length ? (
+        <section className="section-block related-guides-section">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Related guides</p>
+              <h2>Practical reading for this tool</h2>
+            </div>
+          </div>
+          <div className="guide-article-grid">
+            {relatedGuides.map((article) => (
+              <article key={article.slug} className="guide-article-card">
+                <h3>{article.title}</h3>
+                <p>{article.summary}</p>
+                <Link href={`/guides/${article.slug}`}>Read guide</Link>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <ToolClient tool={tool} />
     </div>
